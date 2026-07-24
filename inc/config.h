@@ -14,8 +14,8 @@
 #define TARGET_FPS 60
 
 // Gameplay Area Configuration (left side)
-#define GAMEPLAY_WIDTH 640
-#define GAMEPLAY_HEIGHT 480
+#define GAMEPLAY_WIDTH 892
+#define GAMEPLAY_HEIGHT 652
 #define GAMEPLAY_X 0
 #define GAMEPLAY_Y ((WINDOW_HEIGHT - GAMEPLAY_HEIGHT) / 2)  // Center vertically
 
