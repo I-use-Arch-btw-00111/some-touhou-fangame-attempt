@@ -17,7 +17,7 @@ OBJ_DIR="$BUILD_DIR/obj"
 # Compiler and flags
 CC="gcc"
 CFLAGS="-std=c17 -Wall -Wextra -O2 -I$INC_DIR"
-LDFLAGS="-lraylib -lGL -lm -lpthread -ldl"
+LDFLAGS="-I/usr/local/include -L/usr/local/lib -lraylib -lGL -lm -lpthread -lX11"
 
 # Create build directories
 mkdir -p "$BUILD_DIR" "$OBJ_DIR"
