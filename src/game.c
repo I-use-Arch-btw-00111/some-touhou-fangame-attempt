@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include "game.h"
 #include "config.h"
 #include "ui.h"
