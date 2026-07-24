@@ -75,13 +75,13 @@ void ui_render(float time_elapsed, uint32_t frame_count __attribute__((unused)),
              UI_X + 15, current_y, 16, (fps >= TARGET_FPS - 5) ? GREEN : ORANGE);
     current_y += line_height + 20;
     
-    // OpenGL Info at bottom
+    // OpenGL Info at bottom (with light text on dark background)
     int bottom_y = UI_Y + UI_HEIGHT - 80;
     
-    DrawText("OpenGL Info:", UI_X + 15, bottom_y, 12, LIGHTGRAY);
-    DrawText(TextFormat("Vendor: %s", g_gl_vendor), UI_X + 15, bottom_y + 16, 10, DARKGRAY);
-    DrawText(TextFormat("Renderer: %s", g_gl_renderer), UI_X + 15, bottom_y + 32, 10, DARKGRAY);
-    DrawText(TextFormat("Version: %s", g_gl_version), UI_X + 15, bottom_y + 48, 10, DARKGRAY);
+    DrawText("OpenGL Info:", UI_X + 15, bottom_y, 12, YELLOW);
+    DrawText(TextFormat("Vendor: %s", g_gl_vendor), UI_X + 15, bottom_y + 16, 10, WHITE);
+    DrawText(TextFormat("Renderer: %s", g_gl_renderer), UI_X + 15, bottom_y + 32, 10, WHITE);
+    DrawText(TextFormat("Version: %s", g_gl_version), UI_X + 15, bottom_y + 48, 10, WHITE);
 }
 
 void ui_cleanup(void) {
