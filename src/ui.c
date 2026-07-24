@@ -26,7 +26,7 @@ void ui_init(void) {
     if (version) strncpy(g_gl_version, version, sizeof(g_gl_version) - 1);
 }
 
-void ui_render(float time_elapsed, uint32_t frame_count, float fps) {
+void ui_render(float time_elapsed, uint32_t frame_count __attribute__((unused)), float fps) {
     int start_y = UI_Y + 20;
     int line_height = 30;
     int current_y = start_y;
@@ -58,9 +58,9 @@ void ui_render(float time_elapsed, uint32_t frame_count, float fps) {
     current_y += line_height;
     
     // Bombs
-    DrawText("Bombs: ", UI_X + 15, current_y, 16, LIGHTBLUE);
+    DrawText("Bombs: ", UI_X + 15, current_y, 16, SKYBLUE);
     for (int i = 0; i < 8; i++) {
-        Color bomb_color = (i < g_ui_state.bombs) ? LIGHTBLUE : DARKGRAY;
+        Color bomb_color = (i < g_ui_state.bombs) ? SKYBLUE : DARKGRAY;
         DrawText("●", UI_X + 120 + (i * 18), current_y, 16, bomb_color);
     }
     current_y += line_height;
