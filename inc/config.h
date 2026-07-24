@@ -13,6 +13,18 @@
 #define WINDOW_TITLE "STFA - Some Touhou Fangame Attempt"
 #define TARGET_FPS 60
 
+// Gameplay Area Configuration (left side)
+#define GAMEPLAY_WIDTH 640
+#define GAMEPLAY_HEIGHT 480
+#define GAMEPLAY_X 0
+#define GAMEPLAY_Y ((WINDOW_HEIGHT - GAMEPLAY_HEIGHT) / 2)  // Center vertically
+
+// UI Area Configuration (right side)
+#define UI_WIDTH (WINDOW_WIDTH - GAMEPLAY_WIDTH)
+#define UI_HEIGHT WINDOW_HEIGHT
+#define UI_X GAMEPLAY_WIDTH
+#define UI_Y 0
+
 // Game Configuration
 #define GAME_SCALE 1.0f
 
