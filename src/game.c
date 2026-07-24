@@ -1,5 +1,6 @@
 #include "game.h"
 #include "config.h"
+#include "ui.h"
 #include <raylib.h>
 
 static GameState g_game_state = {0};
@@ -8,6 +9,8 @@ void game_init(void) {
     g_game_state.is_running = 1;
     g_game_state.time_elapsed = 0.0f;
     g_game_state.frame_count = 0;
+    
+    ui_init();
 }
 
 void game_update(float dt) {
@@ -34,12 +37,11 @@ void game_render_ui(void) {
     // Draw UI area border
     DrawRectangleLines(UI_X, UI_Y, UI_WIDTH, UI_HEIGHT, GRAY);
     
-    // UI Content
-    DrawText("UI Area", UI_X + 10, UI_Y + 10, 16, WHITE);
-    DrawText(TextFormat("Frame: %u", g_game_state.frame_count), UI_X + 10, UI_Y + 35, 14, LIGHTGRAY);
-    DrawText(TextFormat("Time: %.2f", g_game_state.time_elapsed), UI_X + 10, UI_Y + 55, 14, LIGHTGRAY);
+    // Calculate FPS
+    float fps = 1.0f / GetFrameTime();
     
-    // TODO: Render UI elements (health, score, wave info) here
+    // Render UI elements
+    ui_render(g_game_state.time_elapsed, g_game_state.frame_count, fps);
 }
 
 void game_render(void) {
@@ -51,5 +53,5 @@ void game_render(void) {
 }
 
 void game_cleanup(void) {
-    // TODO: Cleanup game resources
+    ui_cleanup();
 }
