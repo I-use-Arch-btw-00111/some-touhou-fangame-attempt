@@ -26,11 +26,12 @@ mkdir -p "$BUILD_DIR" "$OBJ_DIR"
 echo "Compiling source files..."
 $CC $CFLAGS -c "$SRC_DIR/main.c" -o "$OBJ_DIR/main.o"
 $CC $CFLAGS -c "$SRC_DIR/game.c" -o "$OBJ_DIR/game.o"
+$CC $CFLAGS -c "$SRC_DIR/map.c" -o "$OBJ_DIR/map.o"
 $CC $CFLAGS -c "$SRC_DIR/ui.c" -o "$OBJ_DIR/ui.o"
 $CC $CFLAGS -c "$SRC_DIR/opengl_context.c" -o "$OBJ_DIR/opengl_context.o"
 
 # Link
 echo "Linking..."
-$CC -o "$BUILD_DIR/stfa" "$OBJ_DIR/main.o" "$OBJ_DIR/game.o" "$OBJ_DIR/ui.o" "$OBJ_DIR/opengl_context.o" $LDFLAGS
+$CC -o "$BUILD_DIR/stfa" "$OBJ_DIR/main.o" "$OBJ_DIR/game.o" "$OBJ_DIR/map.o" "$OBJ_DIR/ui.o" "$OBJ_DIR/opengl_context.o" $LDFLAGS
 
 echo "Build complete! Output: $BUILD_DIR/stfa"
