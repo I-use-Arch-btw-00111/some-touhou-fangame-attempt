@@ -2,6 +2,7 @@
 #define OPENGL_CONTEXT_H
 
 #include <stdint.h>
+#include <stddef.h>
 
 // OpenGL context initialization with AZDO support
 void gl_context_init(void);
