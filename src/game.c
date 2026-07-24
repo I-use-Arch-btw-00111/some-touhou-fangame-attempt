@@ -1,9 +1,11 @@
 #include "game.h"
 #include "config.h"
 #include "ui.h"
+#include "map.h"
 #include <raylib.h>
 
 static GameState g_game_state = {0};
+static Map* g_map = NULL;
 
 void game_init(void) {
     g_game_state.is_running = 1;
@@ -11,23 +13,30 @@ void game_init(void) {
     g_game_state.frame_count = 0;
     
     ui_init();
+    g_map = map_create(32, 32);
 }
 
 void game_update(float dt) {
     g_game_state.time_elapsed += dt;
     g_game_state.frame_count++;
     
-    // TODO: Game logic here
+    // Update map
+    if (g_map) {
+        map_update(g_map, dt);
+    }
 }
 
 void game_render_gameplay(void) {
+    // Fill gameplay area with dark background
+    DrawRectangle(GAMEPLAY_X, GAMEPLAY_Y, GAMEPLAY_WIDTH, GAMEPLAY_HEIGHT, (Color){20, 20, 30, 255});
+    
+    // Render map
+    if (g_map) {
+        map_render(g_map);
+    }
+    
     // Draw gameplay area border
     DrawRectangleLines(GAMEPLAY_X, GAMEPLAY_Y, GAMEPLAY_WIDTH, GAMEPLAY_HEIGHT, DARKBLUE);
-    
-    // Gameplay content
-    DrawText("Gameplay Area", GAMEPLAY_X + 10, GAMEPLAY_Y + 10, 16, BLUE);
-    
-    // TODO: Render game entities (player, enemies, bullets) here
 }
 
 void game_render_ui(void) {
@@ -53,5 +62,8 @@ void game_render(void) {
 }
 
 void game_cleanup(void) {
+    if (g_map) {
+        map_destroy(g_map);
+    }
     ui_cleanup();
 }
