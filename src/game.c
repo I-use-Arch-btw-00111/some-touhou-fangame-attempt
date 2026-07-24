@@ -1,5 +1,6 @@
 #include "game.h"
 #include "config.h"
+#include <raylib.h>
 
 static GameState g_game_state = {0};
 
